@@ -3,11 +3,10 @@ second_wire = ['U7', 'R6', 'D4', 'L4']
 
 
 def wire_path(wire):
-    history = {}
+    path = {}
     x = 0
     y = 0
     count = 0
-
     dirs = {"R": 1,
             "L": -1,
             "U": 1,
@@ -22,23 +21,23 @@ def wire_path(wire):
                 x += dirs[dir]
             else:
                 y += dirs[dir]
-            history[(x, y)] = count
+            path[(x, y)] = count
 
-    return history
+    return path
 
 
 def part1(first_wire, second_wire):
-    hist_f = wire_path(first_wire)
-    hist_s = wire_path(second_wire)
-    inter = [abs(i[0]) + abs(i[1]) for i in hist_f.keys() if i in hist_s]
+    path_first = wire_path(first_wire)
+    path_second = wire_path(second_wire)
+    inter = [abs(i[0]) + abs(i[1]) for i in path_first.keys() if i in path_second]
 
     return min(inter)
 
 
 def part2(first_wire, second_wire):
-    hist_f = wire_path(first_wire)
-    hist_s = wire_path(second_wire)
-    inter = [hist_f[i] + hist_s[i] for i in hist_f.keys() if i in hist_s]
+    path_first = wire_path(first_wire)
+    path_second = wire_path(second_wire)
+    inter = [path_first[i] + path_second[i] for i in path_first.keys() if i in path_second]
 
     return min(inter)
 
