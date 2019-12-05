@@ -1,7 +1,7 @@
-from typing import Dict
+from typing import Dict, List
 
 
-def get_combinations(low: int, top: int) -> Dict[int, int]:
+def get_combinations(low: int, top: int) -> List[Dict[str, int]]:
     combinations = []
     for password in range(low, top):
         password = str(password)
