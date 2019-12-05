@@ -2,15 +2,17 @@ def part1(low: int, top: int) -> int:
     count = 0
     for password in range(low, top):
         password = str(password)
-        double = False
+        chars = {password[0]: 1}
 
         for j in range(1, 6):
-            if password[j] == password[j - 1]:
-                double = True
+            if password[j] in chars:
+                chars[password[j]] += 1
+            else:
+                chars[password[j]] = 1
             if password[j] < password[j - 1]:
                 break
         else:
-            if double:
+            if any(i >= 2 for i in chars.values()):
                 count += 1
     return count
 
