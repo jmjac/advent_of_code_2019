@@ -26,7 +26,6 @@ def vm(lst: list, user_input: list = [], loop_mode: bool = False, i: int = 0):
             lst[A] = lst[C] * lst[B]
             i += 4
         elif opcode == 3:
-
             if user_input:
                 inpt = user_input.pop(0)
             else:
@@ -51,20 +50,10 @@ def vm(lst: list, user_input: list = [], loop_mode: bool = False, i: int = 0):
             else:
                 i += 3
         elif opcode == 7:
-            if lst[C] < lst[B]:
-                val = 1
-            else:
-                val = 0
-            lst[A] = val
+            lst[A] = lst[C] < lst[B]
             i += 4
         elif opcode == 8:
-
-            if lst[C] == lst[B]:
-                val = 1
-            else:
-                val = 0
-
-            lst[A] = val
+            lst[A] = lst[C] == lst[B]
             i += 4
         elif opcode == 9:
             relative += lst[C]
